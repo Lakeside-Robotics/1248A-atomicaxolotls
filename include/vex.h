@@ -6,7 +6,6 @@
 #include "v5.h"
 #include "v5_vcs.h"
 
-#define port
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \
