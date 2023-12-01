@@ -35,7 +35,7 @@ namespace robot {
   }
 
   template <typename T>
-  inline void spinFor(const T& motorToSpin, vex::distanceUnits dstType, double dst, vex::velocityUnits velType, double vel) {
+  inline void spinFor(...) {
     throw std::runtime_error("invalid template param");
   }
 
