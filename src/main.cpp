@@ -11,8 +11,11 @@
 
 using namespace vex;
 
+vex::controller Controller;
+
 // A global instance of competition
 competition Competition;
+
 
 // define your global instances of motors and other devices here
 
@@ -43,6 +46,7 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
+  
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
@@ -58,18 +62,21 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+void move() {
+  vex::motor m = motor(0);
+  m.spin(forward);
+}
+
 void usercontrol(void) {
   // User control code here, inside the loop
   while (1) {
     // This is the main execution loop for the user control program.
     // Each time through the loop your program should update motor + servo
     // values based on feedback from the joysticks.
-
     // ........................................................................
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
-
     wait(20, msec); // Sleep the task for a short amount of time to
                     // prevent wasted resources.
   }
@@ -79,6 +86,13 @@ void usercontrol(void) {
 // Main will set up the competition functions and callbacks.
 //
 int main() {
+  vex::motor l = motor(0);
+  vex::motor r = motor(10);
+  vex::drivetrain Drivetrain(l, r);
+  Drivetrain.drive(forward);
+  Controller.Screen.print("%d", Controller.Axis1.position());
+  //four motors for drivetrain  AA                                  `                                 
+  //one motor for intake
   // Set up callbacks for autonomous and driver control periods.
   Competition.autonomous(autonomous);
   Competition.drivercontrol(usercontrol);
