@@ -34,9 +34,5 @@ namespace robot {
     
   }
 
-  template <typename T>
-  inline void spinFor(...) {
-    throw std::runtime_error("invalid template param");
-  }
 
 };
