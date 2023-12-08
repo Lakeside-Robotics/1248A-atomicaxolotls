@@ -19,8 +19,8 @@
 
 template <typename T>
 struct can_spin
-  template <typename T>
-  static auto test(T) -> decltype(x.spinFor(), std::true_type{});
+  template <typename U>
+  static auto test(U* x) -> decltype(x->spinFor(), std::true_type{});
 
   template <typename T>
   static auto test(...) -> std::false_type{};
